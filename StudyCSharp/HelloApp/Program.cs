@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using static System.Console;
 namespace HelloApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello~");
+            if(args.Length == 0)
+            {
+                WriteLine("ex : HelloApp.exe <이름>");
+                return;
+            }
+            WriteLine($"Hello,{args[0]}!");
         }
     }
 }
