@@ -10,16 +10,21 @@ namespace EnumApp
     {
         enum DialogResult
         {
-            YES,
-            NO,
-            CANCEL,
-            CONFIRM,
-            OK
+            YES=10,
+            NO=20,
+            CANCEL=30,
+            CONFIRM=40,
+            OK=50
         }
         static void Main(string[] args)
         {
-            Console.WriteLine(DialogResult.OK);
-            Console.WriteLine((int)DialogResult.OK);
+            //Console.WriteLine(DialogResult.OK);
+            //Console.WriteLine((int)DialogResult.OK);
+            DialogResult result = DialogResult.YES;
+            if(result == DialogResult.YES)
+            {
+                Console.WriteLine("YES를 선택했습니다.");
+            }
         }
     }
 }
