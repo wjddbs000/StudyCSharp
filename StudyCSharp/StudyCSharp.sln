@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegralConversion", "Integ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringNumberConverion", "StringNumberConverion\StringNumberConverion.csproj", "{5C9B7EE8-A480-43DA-9B54-7F3AB8ABE324}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumApp", "EnumApp\EnumApp.csproj", "{1104C327-4A48-4CFC-8E43-D22D279552CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5C9B7EE8-A480-43DA-9B54-7F3AB8ABE324}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C9B7EE8-A480-43DA-9B54-7F3AB8ABE324}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C9B7EE8-A480-43DA-9B54-7F3AB8ABE324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1104C327-4A48-4CFC-8E43-D22D279552CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1104C327-4A48-4CFC-8E43-D22D279552CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1104C327-4A48-4CFC-8E43-D22D279552CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1104C327-4A48-4CFC-8E43-D22D279552CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
