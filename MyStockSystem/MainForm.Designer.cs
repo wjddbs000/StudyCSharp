@@ -33,6 +33,7 @@
             this.MtlStockAnals = new MetroFramework.Controls.MetroTile();
             this.MtlInvestSimuls = new MetroFramework.Controls.MetroTile();
             this.MtlSearchItem = new MetroFramework.Controls.MetroTile();
+            this.MtlGalmetgilGuide = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // MtlStockAnals
@@ -72,6 +73,19 @@
             this.MtlSearchItem.UseTileImage = true;
             this.MtlSearchItem.Click += new System.EventHandler(this.MtlSearchItem_Click);
             // 
+            // MtlGalmetgilGuide
+            // 
+            this.MtlGalmetgilGuide.Location = new System.Drawing.Point(485, 68);
+            this.MtlGalmetgilGuide.Name = "MtlGalmetgilGuide";
+            this.MtlGalmetgilGuide.Size = new System.Drawing.Size(300, 163);
+            this.MtlGalmetgilGuide.Style = MetroFramework.MetroColorStyle.Silver;
+            this.MtlGalmetgilGuide.TabIndex = 0;
+            this.MtlGalmetgilGuide.Text = "갈맷길 정보";
+            this.MtlGalmetgilGuide.TileImage = global::MyStockSystem.Properties.Resources.seagull2;
+            this.MtlGalmetgilGuide.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MtlGalmetgilGuide.UseTileImage = true;
+            this.MtlGalmetgilGuide.Click += new System.EventHandler(this.MtlGalmetgilGuide_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -79,6 +93,7 @@
             this.ClientSize = new System.Drawing.Size(1280, 780);
             this.Controls.Add(this.MtlStockAnals);
             this.Controls.Add(this.MtlInvestSimuls);
+            this.Controls.Add(this.MtlGalmetgilGuide);
             this.Controls.Add(this.MtlSearchItem);
             this.Font = new System.Drawing.Font("나눔고딕코딩", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -101,6 +116,7 @@
         private MetroFramework.Controls.MetroTile MtlSearchItem;
         private MetroFramework.Controls.MetroTile MtlStockAnals;
         private MetroFramework.Controls.MetroTile MtlInvestSimuls;
+        private MetroFramework.Controls.MetroTile MtlGalmetgilGuide;
     }
 }
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,15 +40,17 @@ namespace BookRentalShopApp2020.Subitems
 
         private void LoginProcess()
         {
-            // 빈값비교 처리
+            //빈 값 비교 처리
             if (string.IsNullOrEmpty(TxtUserID.Text) || string.IsNullOrEmpty(TxtPassword.Text))
             {
-                MetroMessageBox.Show(this, "아이디나 패스워드를 입력하세요!", "로그인", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                TxtUserID.Focus();
+                MetroMessageBox.Show(this, "아이디나 패스워드를 입력하세요!", "로그인",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
             //실제 DB처리
-            string resultId = string.Empty; // ""
+            string resultId = string.Empty; //""
+
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(Commons.CONNSTR))
@@ -56,15 +59,19 @@ namespace BookRentalShopApp2020.Subitems
                     //MetroMessageBox.Show(this, $"DB접속성공!!");
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT userID FROM userTBL " +
-                                       "WHERE userID = @userID " +
-                                        " AND password = @password ";
-                    MySqlParameter paramUserID = new MySqlParameter("@userID", MySqlDbType.VarChar, 12);
-                    paramUserID.Value = TxtUserID.Text.Trim();
-                    MySqlParameter paramPassword = new MySqlParameter("@password", MySqlDbType.VarChar);
-                    paramPassword.Value = TxtPassword.Text.Trim();
+                    cmd.CommandText = "SELECT userID FROM userTBL " +   //스페이스주의!!!!
+                                      " WHERE userID = @userID " +
+                                      "  AND password = @password ";
 
-                    cmd.Parameters.Add(paramUserID);
+                    MySqlParameter paramUserId = new MySqlParameter("@userID", MySqlDbType.VarChar, 45);
+                    paramUserId.Value = TxtUserID.Text.Trim();
+                    MySqlParameter paramPassword = new MySqlParameter("@password", MySqlDbType.VarChar);
+                    //암호화 구문 MD5
+                    var md5Hash = MD5.Create();
+                    var cryptoPassword = Commons.GetMd5Hash(md5Hash, TxtPassword.Text.Trim());
+                    paramPassword.Value = cryptoPassword;
+
+                    cmd.Parameters.Add(paramUserId);
                     cmd.Parameters.Add(paramPassword);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
@@ -72,18 +79,17 @@ namespace BookRentalShopApp2020.Subitems
 
                     if (!reader.HasRows)
                     {
-                        MetroMessageBox.Show(this,"아이디나 패스워드를 정확히 입력하세요","로그인 실패",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this, "아이디나 패스워드를 정확히 입력하세요", "로그인 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         TxtUserID.Text = TxtPassword.Text = string.Empty;
                         TxtUserID.Focus();
                         return;
-
                     }
                     else
                     {
                         resultId = reader["userID"] != null ? reader["userID"].ToString() : string.Empty;
-                        MetroMessageBox.Show(this, $"{resultId} 로그인 성공");
+                        Commons.USERID = resultId; //200720 12:30 추가
+                        MetroMessageBox.Show(this, $"{resultId}로그인 성공");
                     }
-
                 }
             }
             catch (Exception ex)

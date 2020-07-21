@@ -17,6 +17,8 @@ namespace BookRentalShopApp2020
         {
             LogInForm login = new LogInForm();
             login.ShowDialog();
+
+            LbUserId.Text = $"LOGIN : {Commons.USERID}";
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -43,11 +45,36 @@ namespace BookRentalShopApp2020
         private void MnuItemMng_Click(object sender, EventArgs e)
         {
             DivMngForm form = new DivMngForm();
+            ShowFormControl(form,"구분코드 관리");
+        }
+
+        private void MnuItemBooksMng_Click(object sender, EventArgs e)
+        {
+            BookMngForm form = new BookMngForm();
+            ShowFormControl(form,"도서관리");
+        }
+        private void 대여관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RentalMngForm form = new RentalMngForm();
+            ShowFormControl(form, "대여관리");
+        }
+        private void 사용자관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ShowFormControl(Form form,string title)
+        {
             form.MdiParent = this;
-            form.Text = "구분코드 관리";
             form.Dock = DockStyle.Fill;
+            form.Text = title;
             form.Show();
             form.WindowState = FormWindowState.Maximized;
+        }
+
+        private void MnuItemMemberMng_Click(object sender, EventArgs e)
+        {
+            MemberMngForm form = new MemberMngForm();
+            ShowFormControl(form, "회원관리");
         }
     }
 }
